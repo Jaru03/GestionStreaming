@@ -16,6 +16,18 @@ export class ClientsService {
 
   async findAll():Promise<Client[]> {
     const clients = await this.prismaService.client.findMany({
+      include: {
+        subscriptions:{
+          include: {
+            account: {
+              include: {
+                service: true
+              }
+            }
+
+          }
+        }
+      }
     })
     return clients;
   }

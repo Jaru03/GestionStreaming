@@ -22,7 +22,7 @@ export class AccountsService {
             client: true
           }
         },
-        screens: true
+        service: true
       }
     });
   }

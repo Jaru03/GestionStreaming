@@ -38,23 +38,16 @@ model Account {
   password String
 
   service Service @relation(fields: [serviceId], references: [serviceId])
-  screens Screen[]
   subscriptions Subscription[]
 }
 
-model Screen {
-  screenId Int @id @default(autoincrement())
-  accountId Int
-  name String
-  pin String?
-
-  account Account @relation(fields: [accountId], references: [accountId])
-}
 
 model Subscription {
   subscriptionId Int @id @default(autoincrement())
   clientId Int
   accountId Int
+  screenName String
+  screenPin String?
   startDate DateTime @default(now())
   endDate DateTime?
 
